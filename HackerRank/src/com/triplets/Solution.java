@@ -24,8 +24,22 @@ class Result {
 
     public static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
         // Write your code here
-
-        return a;
+        int alice = 0;
+        int bob = 0;
+        int[] list1 = new int[a.size()];
+        int[] list2 = new int[b.size()];
+        list1  = a.stream().mapToInt(i->i.intValue()).toArray();
+        list2  = b.stream().mapToInt(i->i.intValue()).toArray();
+        for(int i=0;i<a.size();i++){
+            if(list1[i]!=list2[i]){
+                if(list1[i]>list2[i])alice++;
+                else bob++;
+            }
+        }
+        List<Integer> rank = new ArrayList<>();
+        rank.add(alice);
+        rank.add(bob);
+        return rank;
     }
 
 }
